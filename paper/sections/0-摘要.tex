@@ -1,0 +1,23 @@
+\section*{摘要}
+\addcontentsline{toc}{section}{摘要}
+
+ZenFS 由于其简单且与硬件 Zoned Storage SSD 紧密结合等特点，实现了零硬件预留空间、零硬件垃圾回收开销等高负载场景下的高性能特性，但是其仅适合 ZNS 设备、需要软件特殊适配等特点也限制了其应用场景灵活性。
+
+AquaFS 是一个以 ZenFS 为原型的适用于 Zoned Storage SSD 的文件系统，将原来的 ZenFS 模块化，扩展其应用场景，添加 RAID 来平衡数据安全和写放大，同时添加调参模块以提高文件系统的智能性和性能。
+
+在未来，我们将继续实现 AquaFS 的更多功能，如用户态 NVME 驱动加速、更完善的数据恢复、多文件系统融合调参等，进一步扩展应用场景并提升其智能化水平。
+
+初赛阶段进度情况如表 \ref{progress} 所示。
+
+\begin{table}[htbp]
+  \centering
+  \caption{初赛进度情况}
+  \label{progress}
+  \input{sections/progress}
+\end{table}
+
+使用 RocksDB 随机读写测试来测试 RAID 模块实现的数据正确性，结果如表 \ref{test-data} 所示。在全盘、分区 RAID 情况下进行 RocksDB 数据库读写并且测试通过，RAID 实现的正确性可以得到验证。
+
+使用 \verb|io_uring| 等优化 IO 后，进行单线程读写测试，结果如表 \ref{raid0-speedup-table} 所示。经过异步 IO 单线程读写优化，在不同 RAID 配置下能够充分利用硬件并行性从而提高整体带宽利用率。
+
+对智能调参模块进行测试，由图 \ref{test-turnner}，智能调参模块在 RocksDB 随机写入测试中，能够根据系统运行数据调整文件系统参数，从而逐步提高数据吞吐量。

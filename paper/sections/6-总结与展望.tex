@@ -1,0 +1,97 @@
+\section{总结与展望}
+
+\subsection{工作总结}
+
+我们提出了 AquaFS，一个以 ZenFS 为原型的，基于 Zoned Namespace SSD 的高性能、高灵活性、高效，而且更加智能的适用于 Flash 存储介质的文件系统。
+
+AquaFS 采用模块化设计，不同模块各司其职，分别负责不同的功能，使得 AquaFS 的功能更加清晰，易于维护和扩展。
+
+在当前初赛阶段，我们实现了 AquaFS 的一些核心功能，包括：
+
+\begin{itemize}
+  \item 智能调参模块
+  \begin{enumerate}
+    \item 参照论文\cite{mahmud_confd_nodate}，实现了高维度参数中重要参数筛选算法
+    \item 针对当前轮获得的重要参数，实现了参数调整算法
+  \end{enumerate}
+  \item 智能动态分区 RAID
+  \begin{enumerate}
+    \item 实现了全盘 RAID 模式中的 RAID0、RAID1、RAID-C
+    \item 分区 RAID 动态地址映射管理实现
+    \item 分区 RAID 动态 RAID 逻辑实现
+    \item 分区 RAID 数据块错误处理和数据恢复
+  \end{enumerate}
+  \item IO 加速实现：实现基于 Direct IO + io\_uring + C++协程 的高性能 IO 加速
+  \item ExtFS 辅助文件系统
+\end{itemize}
+
+总体完成进度约 50\%。
+
+\subsubsection{工作量统计}
+
+这里统计了我们在初赛阶段的工作量，包括代码行数、代码提交数量等，如表\ref{tab:code-repo}所示。统计的行数不包含非我们队伍成员编写的代码，比如 rocksdb、liburing4cpp 的原始代码。
+
+\begin{table}[H]
+  \centering
+  \caption{各个代码仓库的代码统计}
+  \label{tab:code-repo}
+  \begin{tabular}{cccccc}
+  \hline
+  \textbf{代码仓库} & \textbf{仓库说明} & \textbf{提交数量} & \textbf{添加行数} & \textbf{删除行数} & \textbf{总修改行数} \\
+  \hline
+  aquafs-plugin  & 作为 RocksDB 插件的 AquaZFS & 620 & 55,798 & 21,542 & 34,256 \\ 
+  adjust\_param  & 智能调参模块 & 50 & 1955 & 135 & 1820 \\ 
+  docs           & 在线 Markdown 文档网站 & 243 & 3290 & 694 & 2596 \\ 
+  paper          & TeX 格式的初赛技术报告 & 125 & 2895 & 252 & 2643 \\ 
+  AquaFS         & 整个系统通过 \verb|submodule| 的整合 & 55 & 1904 & 126 & 1778 \\ 
+  rocksdb        & 时常需要修改一些数据库参数 & 92 & 131 & 80 & 51 \\ 
+  liburing4cpp   & 测试 C++ 协程 io\_uring & 1 & 1 & 1 & 0 \\ 
+  nvmevirt       & 测试 ZNS 仿真 & 2 & 2 & 2 & 0 \\ 
+  \end{tabular}
+\end{table}
+
+\subsection{创新点和未来}
+
+在初赛阶段，我们总结 AquaFS 的已经实现或者部分实现了的创新点主要有以下几点：
+
+\begin{itemize}
+  \item \textbf{更加智能}：ZenFS 许多逻辑都是固定的，而 AquaFS 通过智能调参、智能分类读写等方式提升其智能化水平。此外，AquaFS 还可以通过文件系统级冗余、文件系统读写分离、inode 缓存等方式提升其智能化水平。
+  \item \textbf{更加安全}：ZenFS 在写入记录层面进行校验，但是对更常见的整块数据损坏无法有效应对，而 AquaFS 通过 RAID 等方式提升了针对 Zones 的数据安全性。
+  \item \textbf{更加高效}：ZenFS 仅有 Direct IO 模式，而 AquaFS 支持 \verb|io_uring| 等更高效的异步 IO 模式。
+\end{itemize}
+
+在概述章节 \ref{overview} 中，我们总结了 AquaFS 相比于原型 ZenFS 的特点，其中还没有实现或者实现得还不够的创新点主要有以下几点：
+
+\begin{itemize}
+  \item \textbf{适用场景更广泛}：ZenFS 仅适用于软件特殊适配后的 ZNS 设备，而 AquaFS 可以通过融合文件系统和通用文件接口等方式适用于更多的软硬件设备。
+  \item \textbf{更加灵活}：ZenFS 由于其简单而参数较少，且都由上层软件适配调整，而 AquaFS 可以通过调整参数、融合文件系统等方式提升其场景适用性，为没有软件适配的应用场景提供支持。
+\end{itemize}
+
+为了完成这些创新点，我们将在后续的比赛阶段继续努力，完成 AquaFS 的全部功能，包括：
+
+\begin{itemize}
+  \item 完善 AquaFS 的智能调参模块，针对垃圾回收、文件系统融合等算法进行调参
+  \item 完善 Data Router，实现更加智能的数据路由，包括文件系统级冗余、文件系统读写分离、inode 缓存等
+  \item 完善 AquaFS 的 IO 加速模块，实现 SPDK、xnvme 等用户态 NVMe 驱动的支持
+  \item 完善 AquaFS 的 ExtFS 辅助文件系统，实现更加智能的文件系统融合
+  \item 完善 AquaFS 的分区 RAID 功能，加强 RAID 分区分配逻辑的智能化
+  \item 对更多的测试进行量化分析，分析并提升 AquaFS 的性能
+  \item 争取获取到 ZNS SSD 设备，进行更加全面而更有说服力的测试和开发
+\end{itemize}
+
+虽然 AquaFS 在初赛阶段已经完成了部分工作，但是未来的工作仍然艰巨，还有许多问题需要解决：
+
+\begin{itemize}
+  \item \textbf{ZNS SSD 设备}：由于暂未申请到 ZNS SSD 设备，我们难以进行更加全面而更有说服力的测试和开发，这是迫切需要解决的问题。
+  \item \textbf{鲁棒性}：在 AquaFS 当前已经发挥作用的模块中，许多代码都是初步实现，运行过程可能不稳定或存在隐形 Bug，还需要进一步完善，提升其鲁棒性。
+  \item \textbf{量化评估}：对许多工作需要做性能和读写放大上的量化评估，包括智能调参模块、IO 加速模块、分区 RAID 等，这些评估需要大量的测试和分析，需要大量的时间和精力。
+  \item \textbf{使用场景}：当前 AquaFS 能够适用的场景还不够广泛，只在 RocksDB 和以 RocksDB 为数据后端的 MySQL 中做了测试，需要进一步扩展其使用场景。
+  \item \textbf{性能提升}：当前 AquaFS 的 IO 路径还是相对较长，一些 IO 请求过程还是过于复杂，需要用 Kernel bypass 的方式提升其性能。
+\end{itemize}
+
+总而言之，AquaFS 在初赛阶段已经完成了部分工作，但是还有许多工作需要完成，我们将在后续的比赛阶段继续努力，完成 AquaFS 的全部功能，提升其性能和鲁棒性，扩展其使用场景，为更多的应用场景提供支持。
+
+\begin{table}[htbp]
+  \centering
+  \input{sections/progress}
+\end{table}

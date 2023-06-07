@@ -1,0 +1,43 @@
+[package]
+name = "rfs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cxx = "1.0"
+lazy_static = "1.4.0"
+mut_static = "5.0.0"
+# fuse = { git = "https://github.com/chiro2001/fuse-rs" }
+libc = "0.2.137"
+env_logger = "0.9.3"
+execute = "0.2.11"
+clap = { version = "4.0.26", features = ["cargo"] }
+anyhow = "1.0.66"
+fork = "0.1.20"
+nix = "0.25.0"
+retry = "2.0.0"
+disk_driver = { path = "disk_driver" }
+macro_tools = { path = "src/macro_tools" }
+rand = "0.8.5"
+chrono = "0.4.23"
+log = "0.4.17"
+num = "0.4.0"
+num_enum = "0.5.7"
+fuser = "0.11.1"
+zerocopy = "0.6.1"
+
+[lib]
+crate-type = ["staticlib", "rlib"]
+
+[profile.release]
+#debug = true
+panic = "abort"
+
+[profile.dev]
+panic = "abort"
+
+[[bin]]
+name = "rfs"
+path = "src/main.rs"

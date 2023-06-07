@@ -1,0 +1,292 @@
+@misc{ext4doc,
+  title = {Ext4 documentation},
+  howpublished={\url{https://www.kernel.org/doc/Documentation/filesystems/ext4.txt}},
+}
+
+@inproceedings{Sehgal2010EvaluatingPA,
+  title={Evaluating Performance and Energy in File System Server Workloads},
+  author={Priya Sehgal and Vasily Tarasov and Erez Zadok},
+  booktitle={USENIX Conference on File and Storage Technologies},
+  year={2010}
+}
+
+@inproceedings{10.5555/3277355.3277441,
+author = {Cao, Zhen and Tarasov, Vasily and Tiwari, Sachin and Zadok, Erez},
+title = {Towards Better Understanding of Black-Box Auto-Tuning: A Comparative Analysis for Storage Systems},
+year = {2018},
+isbn = {9781931971447},
+publisher = {USENIX Association},
+address = {USA},
+abstract = {Modern computer systems come with a large number of configurable parameters that control their behavior. Tuning system parameters can provide significant gains in performance but is challenging because of the immense number of configurations and complex, nonlinear system behavior. In recent years, several studies attempted to automate the tuning of system configurations; but they all applied only one or few optimization methods. In this paper, for the first time, we apply and then perform comparative analysis of multiple black-box optimization techniques on storage systems, which are often the slowest components of computing systems. Our experiments were conducted on a parameter space consisting of nearly 25,000 unique configurations and over 450,000 data points. We compared these methods for their ability to find near-optimal configurations, convergence time, and instantaneous system throughput during auto-tuning. We found that optimal configurations differed by hardware, software, and workloads-- and that no one technique was superior to all others. Based on the results and domain expertise, we begin to explain the efficacy of these important automated black-box optimization methods from a systems perspective.},
+booktitle = {Proceedings of the 2018 USENIX Conference on Usenix Annual Technical Conference},
+pages = {893–907},
+numpages = {15},
+location = {Boston, MA, USA},
+series = {USENIX ATC '18}
+}
+
+@inproceedings{10.1145/3545008.3545012,
+author = {Lu, Kai and Li, Guokuan and Wan, Jiguang and Ma, Ruixiang and Zhao, Wei},
+title = {ADSTS: Automatic Distributed Storage Tuning System Using Deep Reinforcement Learning},
+year = {2023},
+isbn = {9781450397339},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3545008.3545012},
+doi = {10.1145/3545008.3545012},
+abstract = {Modern distributed storage systems with the immense number of configurations, unpredictable workloads and difficult performance evaluation pose higher requirements to parameter tuning. Providing an automatic parameter tuning solution for distributed storage systems is in demand. Lots of researches have attempted to build automatic tuning systems based on deep reinforcement learning (RL). However, they have several limitations in the face of these requirements, including lack of parameter spaces processing, less advanced RL models and time-consuming and unstable training process. In this paper, we present and evaluate the ADSTS, which is an automatic distributed storage tuning system based on deep reinforcement learning. A general preprocessing guideline is first proposed to generate standardized tunable parameter domain. Thereinto, Recursive Stratified Sampling without the nonincremental nature is designed to sample huge parameter spaces and Lasso regression is adopted to identify important parameters. Besides, the twin-delayed deep deterministic policy gradient method is utilized to find the optimal values of tunable parameters. Finally, Multi-processing Training and Workload-directed Model Fine-tuning are adopted to accelerate the model convergence. ADSTS is implemented on Park and is used in the real-world system Ceph. The evaluation results show that ADSTS can recommend near-optimal configurations and improve system performance by 1.5 \texttimes{} ∼2.5 \texttimes{} with acceptable overheads.},
+booktitle = {Proceedings of the 51st International Conference on Parallel Processing},
+articleno = {25},
+numpages = {13},
+keywords = {Reinforcement Learning, Distributed Storage System, Parameter Identification, Auto-tuning},
+location = {Bordeaux, France},
+series = {ICPP '22}
+}
+
+@article{bjorling_zns_nodate,
+	title = {{ZNS}: {Avoiding} the {Block} {Interface} {Tax} for {Flash}-based {SSDs}},
+	abstract = {The Zoned Namespace (ZNS) interface represents a new division of functionality between host software and ﬂash-based SSDs. Current ﬂash-based SSDs maintain the decades-old block interface, which comes at substantial expense in terms of capacity over-provisioning, DRAM for page mapping tables, garbage collection overheads, and host software complexity attempting to mitigate garbage collection. ZNS offers shelter from this ever-rising block interface tax. This paper describes the ZNS interface and explains how it affects both SSD hardware/ﬁrmware and host software. By exposing ﬂash erase block boundaries and write-ordering rules, the ZNS interface requires the host software to address these issues while continuing to manage media reliability within the SSD. We describe how storage software can be specialized to the semantics of the ZNS interface, often resulting in signiﬁcant efﬁciency beneﬁts. We show the work required to enable support for ZNS SSDs, and show how modiﬁed versions of f2fs and RocksDB take advantage of a ZNS SSD to achieve higher throughput and lower tail latency as compared to running on a block-interface SSD with identical physical hardware. For example, we ﬁnd that the 99.9th-percentile random-read latency for our zone-specialized RocksDB is at least 2–4× lower on a ZNS SSD compared to a blockinterface SSD, and the write throughput is 2× higher.},
+	language = {en},
+	author = {Bjørling, Matias and Aghayev, Abutalib and Holmberg, Hans and Ramesh, Aravind and Moal, Damien Le and Ganger, Gregory R and Amvrosiadis, George},
+	note = {titleTranslation: ZNS：避免基于闪存的 SSD 的块接口税
+abstractTranslation:  分区命名空间 (ZNS) 接口代表了主机软件和基于闪存的 SSD 之间的新功能划分。当前基于闪存的 SSD 保留了已有数十年历史的块接口，这在容量过度配置、用于页面映射表的 DRAM、垃圾收集开销以及试图减轻垃圾收集的主机软件复杂性方面付出了巨大的代价。 ZNS 为这种不断增加的块接口税提供了庇护。本文介绍了 ZNS 接口并解释了它如何影响 SSD 硬件/固件和主机软件。通过公开闪存擦除块边界和写入顺序规则，ZNS 接口要求主机软件解决这些问题，同时继续管理 SSD 内的介质可靠性。我们描述了存储软件如何专门用于 ZNS 接口的语义，通常会带来显着的效率优势。我们展示了启用对 ZNS SSD 的支持所需的工作，并展示了与在具有相同物理硬件的块接口 SSD 上运行相比，f2fs 和 RocksDB 的修改版本如何利用 ZNS SSD 实现更高的吞吐量和更低的尾部延迟。例如，我们发现，与块接口 SSD 相比，我们的区域专用 RocksDB 的 99.9\% 随机读取延迟在 ZNS SSD 上至少低 2-4 倍，写入吞吐量高 2 倍。},
+	file = {Bjørling 等 - ZNS Avoiding the Block Interface Tax for Flash-ba.pdf:/home/chiro/Zotero/storage/JAX9IIHC/Bjørling 等 - ZNS Avoiding the Block Interface Tax for Flash-ba.pdf:application/pdf},
+}
+
+@article{liang_itrim_2021,
+	title = {{iTRIM}: {I}/{O}-{Aware} {TRIM} for {Improving} {User} {Experience} on {Mobile} {Devices}},
+	volume = {40},
+	issn = {0278-0070, 1937-4151},
+	shorttitle = {{iTRIM}},
+	url = {https://ieeexplore.ieee.org/document/9209165/},
+	doi = {10.1109/TCAD.2020.3027656},
+	abstract = {TRIM is a recommended command to deliver data invalidation information of the ﬁle system to ﬂash storage. It is issued on both system level and device level. Since it can reduce the number of data copies during device-level garbage collection (DGC), TRIM has been widely used to improve the endurance and performance of mobile devices. Contrary to the common belief, this work identiﬁes that the default TRIM scheme has both merit and drawback to the performance of mobile devices, especially in ﬂash-friendly ﬁle system (F2FS), which is a commonly used ﬁle system in mobile devices. On one hand, TRIM can reduce garbage collection migration to prolong the ﬂash lifetime as well as improving I/O throughput; On the other hand, TRIM may induce I/O contentions. This article proposes a new TRIM scheme, iTRIM, to distribute the timing overheads to system idle time. To further reduce I/O contention and improve I/O performance, the design of iTRIM considers the TRIM size, and the logical addresses’ pattern of victim invalidated data. Experimental results show that iTRIM can minimize I/O contentions while retaining the beneﬁts of the default TRIM scheme for endurance and performance.},
+	language = {en},
+	number = {9},
+	urldate = {2023-04-12},
+	journal = {IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems},
+	author = {Liang, Yu and Ji, Cheng and Fu, Chenchen and Ausavarungnirun, Rachata and Li, Qiao and Pan, Riwei and Chen, Siyu and Shi, Liang and Kuo, Tei-Wei and Xue, Chun Jason},
+	month = sep,
+	year = {2021},
+	note = {Number: 9
+titleTranslation: iTRIM：用于改善移动设备用户体验的 I/O 感知 TRIM
+abstractTranslation:  TRIM 是推荐的命令，用于将文件系统的数据失效信息下发到闪存。它在系统级别和设备级别上发布。由于可以减少设备级垃圾回收（DGC）期间的数据副本数量，TRIM 已被广泛用于提高移动设备的耐用性和性能。与普遍看法相反，这项工作确定默认的 TRIM 方案对移动设备的性能既有优点也有缺点，特别是在闪存友好文件系统 (F2FS) 中，这是移动设备中常用的文件系统。一方面，TRIM 可以减少垃圾收集迁移，从而延长闪存寿命并提高 I/O 吞吐量；另一方面，TRIM 可能会引发 I/O 争用。本文提出了一种新的 TRIM 方案 iTRIM，将时序开销分配给系统空闲时间。为了进一步减少 I/O 争用并提高 I/O 性能，iTRIM 的设计考虑了 TRIM 大小以及受害者无效数据的逻辑地址模式。实验结果表明，iTRIM 可以最大限度地减少 I/O 争用，同时保留默认 TRIM 方案在耐用性和性能方面的优势。},
+	pages = {1782--1795},
+	file = {Liang 等 - 2021 - iTRIM IO-Aware TRIM for Improving User Experienc.pdf:/home/chiro/Zotero/storage/GR4RIUDU/Liang 等 - 2021 - iTRIM IO-Aware TRIM for Improving User Experienc.pdf:application/pdf},
+}
+
+
+
+@article{mahmud_confd_nodate,
+	title = {{CONFD}: {Analyzing} {Configuration} {Dependencies} of {File} {Systems} for {Fun} and {Profit}},
+	abstract = {File systems play an essential role in modern society for managing precious data. To meet diverse needs, they often support many configuration parameters. Such flexibility comes at the price of additional complexity which can lead to subtle configuration-related issues. To address this challenge, we study the configuration-related issues of two major file systems (i.e., Ext4 and XFS) in depth, and identify a prevalent pattern called multilevel configuration dependencies. Based on the study, we build an extensible tool called CONFD to extract the dependencies automatically, and create six plugins to address different configuration-related issues. Our experiments on Ext4 and XFS show that CONFD can extract more than 150 configuration dependencies for the file systems with a low false positive rate. Moreover, the dependency-guided plugins can identify various configuration issues (e.g., mishandling of configurations, regression test failures induced by valid configurations).},
+	language = {en},
+	author = {Mahmud, Tabassum and Gatla, Om Rameshwar and Zhang, Duo and Love, Carson and Bumann, Ryan and Zheng, Mai},
+	note = {titleTranslation: CONFD：分析文件系统的配置依赖性以获得乐趣和利润
+abstractTranslation: 文件系统在现代社会中对管理宝贵数据起着至关重要的作用。为了满足不同的需求，它们通常支持许多配置参数。这种灵活性是以额外的复杂性为代价的，这可能会导致与配置相关的微妙问题。为了应对这一挑战，我们深入研究了两个主要文件系统（即 Ext4 和 XFS）的配置相关问题，并确定了一种称为多级配置依赖性的普遍模式。基于研究，我们构建了一个名为 CONFD 的可扩展工具来自动提取依赖项，并创建了六个插件来解决不同的配置相关问题。我们在 Ext4 和 XFS 上的实验表明，CONFD 可以为文件系统提取 150 多个配置依赖项，误报率很低。此外，依赖引导的插件可以识别各种配置问题（例如，配置处理不当、有效配置引起的回归测试失败）。},
+	file = {Mahmud 等 - CONFD Analyzing Configuration Dependencies of Fil.pdf:/home/chiro/Zotero/storage/UHHDYKTJ/Mahmud 等 - CONFD Analyzing Configuration Dependencies of Fil.pdf:application/pdf},
+}
+
+@article{cao_carver_nodate,
+	title = {Carver: {Finding} {Important} {Parameters} for {Storage} {System} {Tuning}},
+	abstract = {Storage systems usually have many parameters that affect their behavior. Tuning those parameters can provide signiﬁcant gains in performance. Alas, both manual and automatic tuning methods struggle due to the large number of parameters and exponential number of possible conﬁgurations. Since previous research has shown that some parameters have greater performance impact than others, focusing on a smaller number of more important parameters can speed up auto-tuning systems because they would have a smaller state space to explore. In this paper, we propose Carver, which uses (1) a variance-based metric to quantify storage parameters’ importance, (2) Latin Hypercube Sampling to sample huge parameter spaces; and (3) a greedy but efﬁcient parameter-selection algorithm that can identify important parameters. We evaluated Carver on datasets consisting of more than 500,000 experiments on 7 ﬁle systems, under 4 representative workloads. Carver successfully identiﬁed important parameters for all ﬁle systems and showed that importance varies with different workloads. We demonstrated that Carver was able to identify a near-optimal set of important parameters in our datasets. We showed Carver’s efﬁciency by testing it with a small fraction of our dataset; it was able to identify the same set of important parameters with as little as 0.4\% of the whole dataset.},
+	language = {en},
+	author = {Cao, Zhen and Kuenning, Geoff and Zadok, Erez},
+	note = {titleTranslation: Carver：寻找存储系统调优的重要参数
+abstractTranslation:  存储系统通常有许多影响其行为的参数。调整这些参数可以显着提高性能。唉，由于大量的参数和可能的配置呈指数级增长，手动和自动调整方法都很费劲。由于之前的研究表明某些参数比其他参数具有更大的性能影响，因此关注较少数量的更重要的参数可以加快自动调整系统的速度，因为它们可以探索更小的状态空间。在本文中，我们提出了 Carver，它使用（1）基于方差的度量来量化存储参数的重要性，（2）拉丁超立方体采样对巨大的参数空间进行采样； (3) 一种贪婪但有效的参数选择算法，可以识别重要参数。我们在包含 7 个文件系统上的 500,000 多个实验和 4 个代表性工作负载的数据集上评估了 Carver。 Carver 成功地确定了所有文件系统的重要参数，并表明重要性随不同的工作负载而变化。我们证明了 Carver 能够在我们的数据集中识别出一组接近最优的重要参数。我们通过使用一小部分数据集对其进行测试来展示 Carver 的效率；它能够用整个数据集的 0.4\% 来识别同一组重要参数。},
+	file = {Cao 等 - Carver Finding Important Parameters for Storage S.pdf:/home/chiro/Zotero/storage/YVXCF7A2/Cao 等 - Carver Finding Important Parameters for Storage S.pdf:application/pdf},
+}
+
+@misc{shlens_tutorial_2014,
+	title = {A {Tutorial} on {Principal} {Component} {Analysis}},
+	url = {http://arxiv.org/abs/1404.1100},
+	abstract = {Principal component analysis (PCA) is a mainstay of modern data analysis - a black box that is widely used but (sometimes) poorly understood. The goal of this paper is to dispel the magic behind this black box. This manuscript focuses on building a solid intuition for how and why principal component analysis works. This manuscript crystallizes this knowledge by deriving from simple intuitions, the mathematics behind PCA. This tutorial does not shy away from explaining the ideas informally, nor does it shy away from the mathematics. The hope is that by addressing both aspects, readers of all levels will be able to gain a better understanding of PCA as well as the when, the how and the why of applying this technique.},
+	language = {en},
+	urldate = {2023-04-15},
+	publisher = {arXiv},
+	author = {Shlens, Jonathon},
+	month = apr,
+	year = {2014},
+	note = {arXiv:1404.1100 [cs, stat]
+abstractTranslation:  主成分分析 (PCA) 是现代数据分析的支柱——一种被广泛使用但（有时）知之甚少的黑匣子。本文的目的是驱散这个黑匣子背后的魔力。这份手稿的重点是建立一个关于主成分分析如何以及为什么有效的直觉。这份手稿通过从简单的直觉得出 PCA 背后的数学来具体化这些知识。本教程既不回避非正式地解释这些想法，也不回避数学。希望通过解决这两个方面，所有级别的读者都能够更好地理解 PCA 以及应用该技术的时间、方式和原因。
+titleTranslation: 主成分分析教程},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {Shlens - 2014 - A Tutorial on Principal Component Analysis.pdf:/home/chiro/Zotero/storage/548Z7ZV6/Shlens - 2014 - A Tutorial on Principal Component Analysis.pdf:application/pdf},
+}
+
+@inproceedings{10.1145/3035918.3064029,
+author = {Van Aken, Dana and Pavlo, Andrew and Gordon, Geoffrey J. and Zhang, Bohan},
+title = {Automatic Database Management System Tuning Through Large-Scale Machine Learning},
+year = {2017},
+isbn = {9781450341974},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3035918.3064029},
+doi = {10.1145/3035918.3064029},
+abstract = {Database management system (DBMS) configuration tuning is an essential aspect of any data-intensive application effort. But this is historically a difficult task because DBMSs have hundreds of configuration "knobs" that control everything in the system, such as the amount of memory to use for caches and how often data is written to storage. The problem with these knobs is that they are not standardized (i.e., two DBMSs use a different name for the same knob), not independent (i.e., changing one knob can impact others), and not universal (i.e., what works for one application may be sub-optimal for another). Worse, information about the effects of the knobs typically comes only from (expensive) experience.To overcome these challenges, we present an automated approach that leverages past experience and collects new information to tune DBMS configurations: we use a combination of supervised and unsupervised machine learning methods to (1) select the most impactful knobs, (2) map unseen database workloads to previous workloads from which we can transfer experience, and (3) recommend knob settings. We implemented our techniques in a new tool called OtterTune and tested it on two DBMSs. Our evaluation shows that OtterTune recommends configurations that are as good as or better than ones generated by existing tools or a human expert.},
+booktitle = {Proceedings of the 2017 ACM International Conference on Management of Data},
+pages = {1009–1024},
+numpages = {16},
+keywords = {autonomic computing, database tuning, machine learning, database management systems},
+location = {Chicago, Illinois, USA},
+series = {SIGMOD '17}
+}
+
+
+@article{chen_raid_1994,
+	title = {{RAID}: high-performance, reliable secondary storage},
+	volume = {26},
+	issn = {0360-0300, 1557-7341},
+	shorttitle = {{RAID}},
+	url = {https://dl.acm.org/doi/10.1145/176979.176981},
+	doi = {10.1145/176979.176981},
+	abstract = {Disk arrays were proposed in the 1980s as a way to use parallelism between multiple disks to improve aggregate I/O performance. Today they appear in the product lines of most major computer manufacturers. This article gives a comprehensive overview of disk arrays and provides a framework in which to organize current and future work. First, the article introduces disk technology and reviews the driving forces that have popularized disk arrays: performance and reliability. It discusses the two architectural techniques used in disk arrays: striping across multiple disks to improve performance and redundancy to improve reliability. Next, the article describes seven disk array architectures, called RAID (Redundant Arrays of Inexpensive Disks) levels 0–6 and compares their  performance, cost, and reliability. It goes on to discuss advanced research and implementation topics such as refining the basic RAID levels to improve performance and designing algorithms to maintain data consistency. Last, the article describes six disk array prototypes of products and discusses future opportunities for research, with an annotated bibliography disk array-related literature.},
+	language = {en},
+	number = {2},
+	urldate = {2023-04-18},
+	journal = {ACM Computing Surveys},
+	author = {Chen, Peter M. and Lee, Edward K. and Gibson, Garth A. and Katz, Randy H. and Patterson, David A.},
+	month = jun,
+	year = {1994},
+	note = {titleTranslation: RAID：高性能、可靠的二级存储
+abstractTranslation:  磁盘阵列是在 1980 年代提出的，作为一种使用多个磁盘之间的并行性来提高聚合 I/O 性能的方法。今天，它们出现在大多数主要计算机制造商的产品线中。本文全面概述了磁盘阵列，并提供了一个框架来组织当前和未来的工作。首先，文章介绍了磁盘技术，回顾了推动磁盘阵列普及的驱动力：性能和可靠性。它讨论了磁盘阵列中使用的两种架构技术：跨多个磁盘条带化以提高性能和冗余度以提高可靠性。接下来，本文描述了七种磁盘阵列架构，称为 RAID（廉价磁盘冗余阵列）级别 0–6，并比较了它们的性能、成本和可靠性。它继续讨论高级研究和实施主题，例如改进基本 RAID 级别以提高性能和设计算法以保持数据一致性。最后，文章描述了六个磁盘阵列原型产品并讨论了未来的研究机会，并附有注释参考书目磁盘阵列相关文献。},
+	pages = {145--185},
+	file = {Chen 等 - 1994 - RAID high-performance, reliable secondary storage.pdf:/home/chiro/Zotero/storage/XQ592NZH/Chen 等 - 1994 - RAID high-performance, reliable secondary storage.pdf:application/pdf},
+}
+
+@article{jiang_fusionraid_nodate,
+	title = {{FusionRAID}: {Achieving} {Consistent} {Low} {Latency} for {Commodity} {SSD} {Arrays}},
+	abstract = {The use of all-ﬂash arrays has been increasing. Compared to their hard-disk counterparts, each drive offers higher performance but also undergoes more severe periodic performance degradation (due to internal operations such as garbage collection). With a detailed study of widely-used applications/traces and 6 SSD models, we conﬁrm that individual SSD’s performance jitters are further magniﬁed in RAID arrays. Our results also reveal that with SSD latency low and decreasing, the software overhead of RAID write creates long, complex write paths involving more drives, raising both average-case latency and risk of exposing worst-case performance.},
+	language = {en},
+	author = {Jiang, Tianyang and Zhang, Guangyan and Huang, Zican and Ma, Xiaosong and Li, Zhiyue and Zheng, Weimin},
+	note = {titleTranslation: FusionRAID：为商用 SSD 阵列实现一致的低延迟
+abstractTranslation:  全闪存阵列的使用一直在增加。与对应的硬盘相比，每个驱动器都提供更高的性能，但也会经历更严重的周期性性能下降（由于垃圾收集等内部操作）。通过对广泛使用的应用程序/跟踪和 6 个 SSD 模型的详细研究，我们确认单个 SSD 的性能抖动在 RAID 阵列中进一步放大。我们的结果还表明，随着 SSD 延迟较低且不断减少，RAID 写入的软件开销会创建涉及更多驱动器的长而复杂的写入路径，从而增加平均情况下的延迟和暴露最坏情况性能的风险。},
+	file = {Jiang 等 - FusionRAID Achieving Consistent Low Latency for C.pdf:/home/chiro/Zotero/storage/DDZ4IWUQ/Jiang 等 - FusionRAID Achieving Consistent Low Latency for C.pdf:application/pdf},
+}
+
+@article{balakrishnan_differential_2010,
+	title = {Differential {RAID}: {Rethinking} {RAID} for {SSD} reliability},
+	volume = {6},
+	issn = {1553-3077, 1553-3093},
+	shorttitle = {Differential {RAID}},
+	url = {https://dl.acm.org/doi/10.1145/1807060.1807061},
+	doi = {10.1145/1807060.1807061},
+	abstract = {SSDs exhibit very different failure characteristics compared to hard drives. In particular, the bit error rate (BER) of an SSD climbs as it receives more writes. As a result, RAID arrays composed from SSDs are subject to correlated failures. By balancing writes evenly across the array, RAID schemes can wear out devices at similar times. When a device in the array fails towards the end of its lifetime, the high BER of the remaining devices can result in data loss. We propose Diff-RAID, a parity-based redundancy solution that creates an age differential in an array of SSDs. Diff-RAID distributes parity blocks unevenly across the array, leveraging their higher update rate to age devices at different rates. To maintain this age differential when old devices are replaced by new ones, Diff-RAID reshuffles the parity distribution on each drive replacement. We evaluate Diff-RAID's reliability by using real BER data from 12 flash chips on a simulator and show that it is more reliable than RAID-5, in some cases by multiple orders of magnitude. We also evaluate Diff-RAID's performance using a software implementation on a 5-device array of 80 GB Intel X25-M SSDs and show that it offers a trade-off between throughput and reliability.},
+	language = {en},
+	number = {2},
+	urldate = {2023-04-18},
+	journal = {ACM Transactions on Storage},
+	author = {Balakrishnan, Mahesh and Kadav, Asim and Prabhakaran, Vijayan and Malkhi, Dahlia},
+	month = jul,
+	year = {2010},
+	note = {titleTranslation: 差分 RAID：重新思考 RAID 的 SSD 可靠性
+abstractTranslation: 与硬盘驱动器相比，SSD 表现出非常不同的故障特征。特别是，SSD 的误码率 (BER) 会随着写入次数的增加而攀升。因此，由 SSD 组成的 RAID 阵列容易出现相关故障。通过在阵列中均匀地平衡写入，RAID 方案可以在相似的时间磨损设备。当阵列中的一个设备在其生命周期即将结束时出现故障，其余设备的高 BER 可能导致数据丢失。我们提出了 Diff-RAID，这是一种基于奇偶校验的冗余解决方案，可在 SSD 阵列中创建年龄差异。 Diff-RAID 在阵列中不均匀地分布奇偶校验块，利用其更高的更新速率以不同的速率老化设备。为了在旧设备被新设备替换时保持这种年龄差异，Diff-RAID 重新调整每个驱动器更换时的奇偶校验分布。我们通过在模拟器上使用来自 12 个闪存芯片的真实 BER 数据来评估 Diff-RAID 的可靠性，并表明它比 RAID-5 更可靠，在某些情况下高出多个数量级。我们还使用在 80 GB Intel X25-M SSD 的 5 设备阵列上的软件实现来评估 Diff-RAID 的性能，并表明它提供了吞吐量和可靠性之间的权衡。},
+	pages = {1--22},
+	file = {Balakrishnan 等 - 2010 - Differential RAID Rethinking RAID for SSD reliabi.pdf:/home/chiro/Zotero/storage/E4SJK99J/Balakrishnan 等 - 2010 - Differential RAID Rethinking RAID for SSD reliabi.pdf:application/pdf},
+}
+
+@inproceedings{xie_n-code_2019,
+	address = {Kyoto Japan},
+	title = {N-{Code}: {An} {Optimal} {RAID}-6 {MDS} {Array} {Code} for {Load} {Balancing} and {High} {I}/{O} {Performance}},
+	isbn = {978-1-4503-6295-5},
+	shorttitle = {N-{Code}},
+	url = {https://dl.acm.org/doi/10.1145/3337821.3337829},
+	doi = {10.1145/3337821.3337829},
+	abstract = {Existing RAID-6 codes are developed to optimize either reads or writes for storage systems. To improve both read and write operations, this paper proposes a novel RAID-6 MDS array code called N-Code. N-Code exhibits three aspects of salient features: (i) read performance. N-Code assigns both horizontal parity chains and horizontal parities across disks, without generating a dedicated parity disk. Such a parity layout not only makes all the disks service normal reads, but also allows continuous data elements to share the same horizontal chain to optimize degraded reads; (ii) write performance. Diagonal parities are distributed across disks in a decentralized manner to optimize partial stripe writes, and horizontal parity chains enable N-Code to reduce I/O costs of partial stripe writes by merging I/O operations; and (iii) balancing performance. Decentralized horizontal/diagonal parities potentially support the I/O balancing optimization for single writes. A theoretical analysis indicates that apart from the optimal storage efficiency, N-Code is featured with the optimal complexity for both encoding/decoding computations and update operations. The results of empirical experiments shows that N-Code demonstrates higher normal-read, degraded-read, and partial-stripe-write performance than the seven baseline popular RAID-6 codes. In particular, in the partial-stripe-write case, N-Code accelerates partial stripe writes by 32\%-66\% relative to horizontal codes; when it comes to degraded reads, N-Code improves degraded reads by 32\%-53\% compared to vertical codes. Furthermore, compared to the baseline codes, N-Code enhances load balancing by a factor anywhere between 1.19 to 9.09 for single-write workload, and between 1.3 to 6.92 for read-write mixed workload.},
+	language = {en},
+	urldate = {2023-04-29},
+	booktitle = {Proceedings of the 48th {International} {Conference} on {Parallel} {Processing}},
+	publisher = {ACM},
+	author = {Xie, Ping and Yuan, Zhu and Huang, Jianzhong and Qin, Xiao},
+	month = aug,
+	year = {2019},
+	note = {titleTranslation: N 代码：用于负载平衡和高 I/O 性能的最佳 RAID-6 MDS 阵列代码
+abstractTranslation:  开发现有的 RAID-6 代码是为了优化存储系统的读取或写入。为了改进读写操作，本文提出了一种称为 N-Code 的新型 RAID-6 MDS 阵列代码。 N-Code 表现出三个方面的显着特征：(i) 读取性能。 N-Code 分配水平奇偶校验链和跨磁盘的水平奇偶校验，而不生成专用的奇偶校验磁盘。这样的奇偶校验布局不仅可以让所有的磁盘都服务于正常的读，还可以让连续的数据元素共享同一条水平链来优化降级读； (ii) 写入性能。对角奇偶校验以分散的方式分布在磁盘上以优化部分条带写入，水平奇偶校验链使 N-Code 通过合并 I/O 操作来降低部分条带写入的 I/O 成本； (iii) 平衡性能。分散的水平/对角奇偶校验可能支持单次写入的 I/O 平衡优化。理论分析表明，除了存储效率最优外，N-Code还具有编码/解码计算和更新操作复杂度最优的特点。实证实验的结果表明，与七个基线流行的 RAID-6 代码相比，N-Code 表现出更高的正常读取、降级读取和部分条带写入性能。特别是，在partial-stripe-write情况下，N-Code相对于horizo​​ntal code，部分stripe write加速了32\%-66\%；在降级读取方面，与垂直代码相比，N-Code 将降级读取提高了 32\%-53\%。此外，与基线代码相比，N-Code 将单写工作负载的负载平衡提高了 1.19 到 9.09 之间的任何一个系数，而读写混合工作负载则提高了 1.3 到 6.92 之间的系数。},
+	pages = {1--10},
+	file = {Xie 等 - 2019 - N-Code An Optimal RAID-6 MDS Array Code for Load .pdf:/home/chiro/Zotero/storage/UANP9I2V/Xie 等 - 2019 - N-Code An Optimal RAID-6 MDS Array Code for Load .pdf:application/pdf},
+}
+
+
+@inproceedings{cai_program_2013,
+	address = {Asheville, NC, USA},
+	title = {Program interference in {MLC} {NAND} flash memory: {Characterization}, modeling, and mitigation},
+	isbn = {978-1-4799-2987-0},
+	shorttitle = {Program interference in {MLC} {NAND} flash memory},
+	url = {http://ieeexplore.ieee.org/document/6657034/},
+	doi = {10.1109/ICCD.2013.6657034},
+	abstract = {As NAND flash memory continues to scale down to smaller process technology nodes, its reliability and endurance are degrading. One important source of reduced reliability is the phenomenon of program interference: when a flash cell is programmed to a value, the programming operation affects the threshold voltage of not only that cell, but also the other cells surrounding it. This interference potentially causes a surrounding cell to move to a logical state (i.e., a threshold voltage range) that is different from its original state, leading to an error when the cell is read. Understanding, characterizing, and modeling of program interference, i.e., how much the threshold voltage of a cell shifts when another cell is programmed, can enable the design of mechanisms that can effectively and efficiently predict and/or tolerate such errors. In this paper, we provide the first experimental characterization of and a realistic model for program interference in modern MLC NAND flash memory. To this end, we utilize the read-retry mechanism present in some state-of-the-art 2Y-nm (i.e., 20-24nm) flash chips to measure the changes in threshold voltage distributions of cells when a particular cell is programmed. Our results show that the amount of program interference received by a cell depends on 1) the location of the programmed cells, 2) the order in which cells are programmed, and 3) the data values of the cell that is being programmed as well as the cells surrounding it. Based on our experimental characterization, we develop a new model that predicts the amount of program interference as a function of threshold voltage values and changes in neighboring cells. We devise and evaluate one application of this model that adjusts the read reference voltage to the predicted threshold voltage distribution with the goal of minimizing erroneous reads. Our analysis shows that this new technique can reduce the raw flash bit error rate by 64\% and thereby improve flash lifetime by 30\%. We hope that the understanding and models developed in this paper lead to other error tolerance mechanisms for future flash memories.},
+	language = {en},
+	urldate = {2023-04-16},
+	booktitle = {2013 {IEEE} 31st {International} {Conference} on {Computer} {Design} ({ICCD})},
+	publisher = {IEEE},
+	author = {Cai, Yu and Mutlu, Onur and Haratsch, Erich F. and Mai, Ken},
+	month = oct,
+	year = {2013},
+	note = {abstractTranslation:  随着 NAND 闪存继续缩小到更小的工艺技术节点，其可靠性和耐用性正在下降。降低可靠性的一个重要来源是编程干扰现象：当闪存单元被编程为一个值时，编程操作不仅会影响该单元的阈值电压，还会影响它周围的其他单元的阈值电压。这种干扰可能会导致周围的单元移动到与其原始状态不同的逻辑状态（即阈值电压范围），从而导致读取单元时出错。理解、表征和建模编程干扰，即当另一个单元被编程时一个单元的阈值电压偏移多少，可以实现能够有效且高效地预测和/或容忍此类错误的机制的设计。在本文中，我们提供了现代 MLC NAND 闪存中程序干扰的第一个实验特性和一个现实模型。为此，我们利用一些最先进的 2Y-nm（即 20-24nm）闪存芯片中存在的读取重试机制来测量特定单元被编程时单元阈值电压分布的变化。我们的结果表明，单元接收到的编程干扰量取决于 1) 编程单元的位置，2) 单元编程的顺序，以及 3) 正在编程的单元的数据值以及它周围的细胞。基于我们的实验表征，我们开发了一种新模型，可以预测程序干扰量作为阈值电压值和相邻单元变化的函数。我们设计并评估了该模型的一个应用，该模型将读取参考电压调整为预测的阈值电压分布，目的是最大限度地减少错误读取。我们的分析表明，这项新技术可以将原始闪存误码率降低 64\%，从而将闪存寿命延长 30\%。我们希望本文中开发的理解和模型能够为未来闪存带来其他容错机制。
+titleTranslation: MLC NAND 闪存中的程序干扰：表征、建模和缓解},
+	pages = {123--130},
+	file = {Cai 等 - 2013 - Program interference in MLC NAND flash memory Cha.pdf:/home/chiro/Zotero/storage/Y29FAYHT/Cai 等 - 2013 - Program interference in MLC NAND flash memory Cha.pdf:application/pdf},
+}
+
+@article{kim_nvmevirt_nodate,
+	title = {{NVMeVirt}: {A} {Versatile} {Software}-defined {Virtual} {NVMe} {Device}},
+	abstract = {There have been drastic changes in the storage device landscape recently. At the center of the diverse storage landscape lies the NVMe interface, which allows high-performance and flexible communication models required by these nextgeneration device types. However, its hardware-oriented definition and specification are bottlenecking the development and evaluation cycle for new revolutionary storage devices. In this paper, we present NVMeVirt, a novel approach to facilitate software-defined NVMe devices. A user can define any NVMe device type with custom features, and NVMeVirt allows it to bridge the gap between the host I/O stack and the virtual NVMe device in software. We demonstrate the advantages and features of NVMeVirt by realizing various storage types and configurations, such as conventional SSDs, low-latency high-bandwidth NVM SSDs, zoned namespace SSDs, and key-value SSDs with the support of PCI peer-topeer DMA and NVMe-oF target offloading. We also make cases for storage research with NVMeVirt, such as studying the performance characteristics of database engines and extending the NVMe specification for the improved key-value SSD performance.},
+	language = {en},
+	author = {Kim, Sang-Hoon and Jeong, Seongyeop and Shim, Jaehoon and Kang, Ilkueon and Lee, Euidong and Kim, Jin-Soo},
+	note = {titleTranslation: NVMeVirt：一种多功能的软件定义虚拟 NVMe 设备
+abstractTranslation:  最近存储设备领域发生了巨大变化。多样化存储环境的核心是 NVMe 接口，它支持这些下一代设备类型所需的高性能和灵活的通信模型。然而，其面向硬件的定义和规范正在成为新的革命性存储设备的开发和评估周期的瓶颈。在本文中，我们介绍了 NVMeVirt，这是一种促进软件定义 NVMe 设备的新方法。用户可以定义任何具有自定义功能的 NVMe 设备类型，NVMeVirt 允许它在软件中弥合主机 I/O 堆栈和虚拟 NVMe 设备之间的差距。我们通过实现各种存储类型和配置来展示 NVMeVirt 的优势和特性，例如传统 SSD、低延迟高带宽 NVM SSD、分区命名空间 SSD 以及支持 PCI 点对点 DMA 和 NVMe 的键值 SSD -oF 目标卸载。我们还使用 NVMeVirt 进行存储研究，例如研究数据库引擎的性能特征和扩展 NVMe 规范以提高键值 SSD 性能。},
+	file = {Kim 等 - NVMeVirt A Versatile Software-defined Virtual NVM.pdf:/home/chiro/Zotero/storage/QXHB8MMS/Kim 等 - NVMeVirt A Versatile Software-defined Virtual NVM.pdf:application/pdf},
+}
+
+@article{lu_mitigating_2019,
+	title = {Mitigating {Synchronous} {I}/{O} {Overhead} in {File} {Systems} on {Open}-{Channel} {SSDs}},
+	volume = {15},
+	issn = {1553-3077, 1553-3093},
+	url = {https://dl.acm.org/doi/10.1145/3319369},
+	doi = {10.1145/3319369},
+	abstract = {Synchronous I/O has long been a design challenge in file systems. Although open-channel solid state drives (SSDs) provide better performance and endurance to file systems, they still suffer from synchronous I/Os due to the amplified writes and worse hot/cold data grouping. The reason lies in the controversy design choices between flash write and read/erase operations. While fine-grained logging improves performance and endurance in writes, it hurts indexing and data grouping efficiency in read and erase operations. In this article, we propose a flash-friendly data layout by introducing a built-in persistent staging layer to provide balanced read, write, and garbage collection performance. Based on this, we design a new flash file system (FS) named
+              StageFS
+              , which decouples the content and structure updates. Content updates are logically logged to the staging layer in a persistence-efficient way, which achieves better write performance and lower write amplification. The updated contents are reorganized into the normal data area for structure updates, with improved hot/cold grouping and in a page-level indexing way, which is more friendly to read and garbage collection operations. Evaluation results show that, compared to recent flash-friendly file system (F2FS), StageFS effectively improves performance by up to 211.4\% and achieves low garbage collection overhead for workloads with frequent synchronization.},
+	language = {en},
+	number = {3},
+	urldate = {2023-04-12},
+	journal = {ACM Transactions on Storage},
+	author = {Lu, Youyou and Shu, Jiwu and Zhang, Jiacheng},
+	month = aug,
+	year = {2019},
+	note = {Number: 3
+titleTranslation: 减轻开放通道 SSD 文件系统中的同步 I/O 开销
+abstractTranslation:  长期以来，同步 I/O 一直是文件系统中的设计挑战。尽管开放通道固态硬盘 (SSD) 为文件系统提供了更好的性能和耐用性，但由于写入放大和更差的热/冷数据分组，它们仍然受到同步 I/O 的影响。原因在于闪存写入和读取/擦除操作之间的争议设计选择。虽然细粒度日志记录提高了写入性能和耐久性，但它会损害读取和擦除操作中的索引和数据分组效率。在本文中，我们通过引入内置的持久暂存层来提供对闪存友好的数据布局，以提供平衡的读取、写入和垃圾收集性能。基于此，我们设计了一个名为 StageFS 的新闪存文件系统 (FS)，将内容和结构更新解耦。内容更新以持久有效的方式逻辑记录到暂存层，从而实现更好的写入性能和更低的写入放大。将更新的内容重新组织到正常的数据区进行结构更新，改进的冷热分组和页级索引方式，对读取和垃圾回收操作更友好。评估结果表明，与最近的闪存友好文件系统 (F2FS) 相比，StageFS 有效提高了高达 211.4\% 的性能，并为频繁同步的工作负载实现了较低的垃圾收集开销。},
+	pages = {1--25},
+	file = {Lu 等 - 2019 - Mitigating Synchronous IO Overhead in File System.pdf:/home/chiro/Zotero/storage/R2ZSXHN8/Lu 等 - 2019 - Mitigating Synchronous IO Overhead in File System.pdf:application/pdf},
+}
+
+@inproceedings{bjorling_linux_2013,
+	address = {Haifa, Israel},
+	title = {Linux block {IO}: introducing multi-queue {SSD} access on multi-core systems},
+	isbn = {978-1-4503-2116-7},
+	shorttitle = {Linux block {IO}},
+	url = {http://dl.acm.org/citation.cfm?doid=2485732.2485740},
+	doi = {10.1145/2485732.2485740},
+	abstract = {The IO performance of storage devices has accelerated from hundreds of IOPS ﬁve years ago, to hundreds of thousands of IOPS today, and tens of millions of IOPS projected in ﬁve years. This sharp evolution is primarily due to the introduction of NAND-ﬂash devices and their data parallel design. In this work, we demonstrate that the block layer within the operating system, originally designed to handle thousands of IOPS, has become a bottleneck to overall storage system performance, specially on the high NUMA-factor processors systems that are becoming commonplace. We describe the design of a next generation block layer that is capable of handling tens of millions of IOPS on a multi-core system equipped with a single storage device. Our experiments show that our design scales graciously with the number of cores, even on NUMA systems with multiple sockets.},
+	language = {en},
+	urldate = {2023-04-15},
+	booktitle = {Proceedings of the 6th {International} {Systems} and {Storage} {Conference} on - {SYSTOR} '13},
+	publisher = {ACM Press},
+	author = {Bjørling, Matias and Axboe, Jens and Nellans, David and Bonnet, Philippe},
+	year = {2013},
+	note = {abstractTranslation:  存储设备的IO性能从五年前的数百IOPS，加速到现在的几十万IOPS，五年后有望达到千万级IOPS。这种急剧的演变主要是由于 NAND 闪存设备及其数据并行设计的引入。在这项工作中，我们展示了操作系统中最初设计用于处理数千 IOPS 的块层已成为整体存储系统性能的瓶颈，特别是在越来越普遍的高 NUMA 因子处理器系统上。我们描述了能够在配备单个存储设备的多核系统上处理数千万 IOPS 的下一代块层的设计。我们的实验表明，即使在具有多个插槽的 NUMA 系统上，我们的设计也能很好地扩展内核数量。
+titleTranslation: Linux block IO：在多核系统上引入多队列SSD访问},
+	pages = {1},
+	file = {Bjørling 等 - 2013 - Linux block IO introducing multi-queue SSD access.pdf:/home/chiro/Zotero/storage/89BBTEYX/Bjørling 等 - 2013 - Linux block IO introducing multi-queue SSD access.pdf:application/pdf},
+}
+
+@article{schroeder_flash_nodate,
+	title = {Flash {Reliability} in {Production}: {The} {Expected} and the {Unexpected}},
+	abstract = {As solid state drives based on ﬂash technology are becoming a staple for persistent data storage in data centers, it is important to understand their reliability characteristics. While there is a large body of work based on experiments with individual ﬂash chips in a controlled lab environment under synthetic workloads, there is a dearth of information on their behavior in the ﬁeld. This paper provides a large-scale ﬁeld study covering many millions of drive days, ten different drive models, different ﬂash technologies (MLC, eMLC, SLC) over 6 years of production use in Google’s data centers. We study a wide range of reliability characteristics and come to a number of unexpected conclusions. For example, raw bit error rates (RBER) grow at a much slower rate with wear-out than the exponential rate commonly assumed and, more importantly, they are not predictive of uncorrectable errors or other error modes. The widely used metric UBER (uncorrectable bit error rate) is not a meaningful metric, since we see no correlation between the number of reads and the number of uncorrectable errors. We see no evidence that higher-end SLC drives are more reliable than MLC drives within typical drive lifetimes. Comparing with traditional hard disk drives, ﬂash drives have a signiﬁcantly lower replacement rate in the ﬁeld, however, they have a higher rate of uncorrectable errors.},
+	language = {en},
+	author = {Schroeder, Bianca and Lagisetty, Raghav and Merchant, Arif},
+	note = {titleTranslation: 生产中的闪存可靠性：预期和意外
+abstractTranslation:  由于基于闪存技术的固态驱动器正在成为数据中心持久数据存储的主要产品，因此了解它们的可靠性特征非常重要。虽然有大量工作基于在合成工作负载下在受控实验室环境中对单个闪存芯片进行的实验，但缺乏关于它们在该领域行为的信息。本文提供了一项大规模的实地研究，涵盖了数百万天的驱动器工作日、十种不同的驱动器模型、不同的闪存技术（MLC、eMLC、SLC）在谷歌数据中心超过 6 年的生产使用。我们研究了范围广泛的可靠性特征并得出了许多意想不到的结论。例如，原始误码率 (RBER) 随着磨损的增长速度比通常假设的指数速率要慢得多，更重要的是，它们不能预测不可纠正的错误或其他错误模式。广泛使用的指标 UBER（不可纠正的误码率）不是一个有意义的指标，因为我们看不到读取次数和不可纠正错误的数量之间没有相关性。我们没有看到任何证据表明在典型的驱动器使用寿命内，高端 SLC 驱动器比 MLC 驱动器更可靠。与传统硬盘驱动器相比，闪存驱动器的现场更换率要低得多，但它们的不可纠正错误率更高。},
+	file = {Schroeder 等 - Flash Reliability in Production The Expected and .pdf:/home/chiro/Zotero/storage/D6W9DFPL/Schroeder 等 - Flash Reliability in Production The Expected and .pdf:application/pdf},
+}

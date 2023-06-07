@@ -1,0 +1,26 @@
+% \begin{table}[htbp]
+%   \centering
+%   \caption{初赛进度情况}
+%   \label{progress}
+  \begin{tabular}{|l|l|p{8cm}|}
+    \hline
+    \textbf{改进内容}              & \textbf{完成进度} & \textbf{完成情况} \\
+    \hline
+    智能调参模块                   & 进度约70\%      & \checkmark 基于方差的重要参数选择方案 \\
+                                  &                & \checkmark 基于高斯回归的调参方案 \\
+                                  &                & $\square$ 将对垃圾回收参数进行进一步测试 \\
+                                  &                & $\square$ 将对融合文件系统后的更多参数进行调优测试 \\
+    \hline
+    基于 Zone 的                  & 整体进度约 80\% & \checkmark 全盘 RAID 模式 RAID0、RAID1、RAID-C \\
+    智能动态分区 RAID              &                & \checkmark 分区 RAID 模式 Zone 映射和 RAID 逻辑分配 \\
+                                  &                & \checkmark 数据完整性检测和恢复 \\
+    \hline
+    异步 IO 优化                  & 进度约 60\%     & \checkmark 完成了 \verb|io_uring| 异步读写优化 \\
+                                  &                & $\square$ 将进一步研究基于 spdk、xnvme 等的用户态 nvme 驱动 \\
+    \hline
+    融合通用文件系统               & 进度约 50\%     & \checkmark 基于 FUSE 和 Rust 完成一个 Ext2 兼容文件系统 \\
+                                  &                & $\square$ 将进一步研究与 ZenFS 的结合方式 \\
+                                  &                & $\square$ 将进一步研究智能数据请求分类方法 \\
+    \hline
+  \end{tabular}
+% \end{table}

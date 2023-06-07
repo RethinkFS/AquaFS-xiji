@@ -1,0 +1,9 @@
+[book]
+authors = ["Chiro Liang", "lty", "Sky"]
+language = "zh-CN"
+multilingual = false
+src = "."
+title = "AquaFS Docs"
+
+[output.html]
+mathjax-support = true

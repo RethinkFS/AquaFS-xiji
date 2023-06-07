@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Originally, `aquafs` executable is located in the same directory as this script.
+# This scripts is for compatibility with the old way of running tests.
+
+# find executable in cmake binary dir
+if test -d $(dirname $0)/../cmake-build-debug; then
+    AQUAFS_DIR=$(dirname $0)/../cmake-build-debug
+fi
+
+if [ -z "$AQUAFS_DIR" ]; then
+    AQUAFS_DIR=$(dirname $0)/../build
+fi
+
+$AQUAFS_DIR/aquafs $1 $2 $3 $4 $5 $6 $7 $8 $9

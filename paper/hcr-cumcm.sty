@@ -1,0 +1,133 @@
+% Copyright (c) 2021-2022 Hans Wan
+% HCR-CUMCM.STY is licensed under Mulan PSL v2.
+% You can use this software according to the terms and conditions of the Mulan PSL v2.
+% You may obtain a copy of Mulan PSL v2 at:
+%          http://license.coscl.org.cn/MulanPSL2
+% THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND,
+% EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,
+% MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
+% See the Mulan PSL v2 for more details.
+
+% HCR-CUMCM.STY: LaTeX Template For Contemporary Undergraduate Mathematical Contest in Modeling Made by TeamHCR
+% BEGIN OF TEMPLATE
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hcr-cumcm}
+
+%% Packages Required
+\RequirePackage[hmargin=2.54cm,vmargin=3.17cm]{geometry}
+\RequirePackage[intlimits]{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{booktabs}
+\RequirePackage{multirow}
+\RequirePackage{tikz,pgfplots}
+\RequirePackage[fontset=none,zihao=-4,scheme=chinese,heading=true]{ctex}
+\RequirePackage{fancybox}
+\RequirePackage{mathdots}
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\RequirePackage{listings,color}
+\RequirePackage{siunitx}
+\RequirePackage{hyperref}
+\RequirePackage{bookmark}
+\RequirePackage{upgreek}
+\RequirePackage{siunitx}
+\RequirePackage[font={small}]{caption}
+\RequirePackage{longtable}
+\RequirePackage{subfigure}
+
+%% Fonts & Style
+%%% Latin Fonts, use NewTX
+%%% Chinese Fonts, use Hanyi fonts
+\setCJKmainfont[BoldFont=HYCuJianHeiJ,ItalicFont=HYKaiTiS]{HYShuSongErS} 
+\RequirePackage{newtxtext}
+\RequirePackage[upint]{newtxmath}
+
+%% Title
+\renewcommand{\maketitle}{%
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{fig/school-logo}\\
+        \vspace*{\fill}
+        \begingroup
+        \centering
+        
+        \zihao{1}
+        \textbf{AquaFS} \\
+        \vspace{1ex}
+        \zihao{3}
+        \textbf{开发设计文档} \\
+
+        \vspace{18ex}
+
+        \zihao{4}
+        \begin{tabular}{cc}
+            参赛队名 & RethinkFS \\
+            \cline{2-2} 
+            队伍成员 & 梁鑫嵘、李羿廷 \\
+            \cline{2-2} 
+            指导老师 & 李诗逸、夏文 \\
+            \cline{2-2} 
+        \end{tabular}
+
+        \endgroup
+        \vspace*{\fill}
+
+        \vspace{1ex}
+        2023 年 6 月 6 日
+    \end{center}
+}
+
+%% Appendix
+\ctexset{
+    appendix/name = {附录}
+}
+
+%% Code Verbatim Environment
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{Teal}{RGB}{0,128,128}
+
+%% Hyperref
+\AtBeginDocument {%
+    \hypersetup{%
+        pdftitle={\@title},%
+        % hidelinks,%
+        colorlinks=true,
+        urlcolor=Teal,
+        linkcolor=Teal,
+        % urlcolor=[RGB]{0,0.5,0.5},
+        % linkcolor=[RGB]{0,0.5,0.5},
+        linkbordercolor=Teal,
+        bookmarksnumbered=true%
+    }
+}
+
+\lstset{frame=tb,%
+    aboveskip=3mm,%
+    belowskip=3mm,%
+    showstringspaces=false,%
+    columns=flexible,%
+    basicstyle={\small\ttfamily},%
+    numbers=left,%
+    numberstyle=\tiny\color{gray},%
+    keywordstyle=\color{blue},%
+    commentstyle=\color{dkgreen},%
+    stringstyle=\color{mauve},%
+    breaklines,%
+    %breakatwhitespace=true,%
+    breakatwhitespace=false,%
+    tabsize=4%
+}
+
+%% Math Things
+%%% Use \dif to make roman d
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+%%% Use \e to make roman e
+\newcommand*{\e}{\mathrm{e}}
+%%% Use \vecmat to make bold symbol
+\newcommand*{\vecmat}[1]{\boldsymbol{#1}}
+
+\newcommand{\N}[1]{\num[group-minimum-digits=4]{#1}}
+
+% END OF TEMPLATE

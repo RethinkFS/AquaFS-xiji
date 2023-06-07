@@ -1,0 +1,63 @@
+% Copyright (c) 2022 Hans Wan, Chiro Liang and ReiSakuma
+% All rights reserved.
+% This paper is publicised for non-commercial learning purpose only.
+% THIS PAPER IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND,
+% EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,
+% MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
+
+\documentclass[a4paper]{article}
+\usepackage[svgnames]{xcolor}
+\usepackage{hcr-cumcm}
+\usepackage[style=gb7714-2015,backend=biber]{biblatex}
+\addbibresource{bibdata.bib}
+
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\setcounter{secnumdepth}{4} % how many sectioning levels to assign numbers to
+\setcounter{tocdepth}{4} % how many sectioning levels to show in ToC
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
+
+\lstset{frame=tb,
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+%   numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2
+}
+
+\title{AquaFS 开发设计文档}
+
+\begin{document}
+    \pagestyle{plain}
+    \maketitle
+    \newpage
+    %% ABSTRACT
+    \input{sections/0-摘要.tex}
+    \newpage
+    \tableofcontents
+    \newpage
+    %% CONTENT
+    \input{sections/1-概述.tex}
+    \input{sections/2-需求分析与调研.tex}
+    \input{sections/3-系统设计.tex}
+    \input{sections/4-系统实现.tex}
+    \input{sections/5-系统测试.tex}
+    \newpage
+    \input{sections/6-总结与展望.tex}
+    %% APPENDIX
+    \appendix
+    \input{sections/7-附录.tex}
+\end{document}

@@ -1,0 +1,12 @@
+[package]
+name = "disk_driver"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.66"
+cxx = "1.0.82"
+log = "0.4.17"
+lru = "0.8.1"
