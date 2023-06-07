@@ -22,11 +22,11 @@
     \hline
     \textbf{测试项} & \textbf{设备数} & \textbf{测试参数} & \textbf{测试结果} \\
     \hline
-    全盘 RAID C & 2 & \verb|--fs_uri=aquafs://raidc:dev:nullb0,dev:nullb1| & 通过 \\
-    全盘 RAID 0 & 2 & \verb|--fs_uri=aquafs://raid0:dev:nullb0,dev:nullb1| & 通过 \\
-    全盘 RAID 1 & 2 & \verb|--fs_uri=aquafs://raid1:dev:nullb0,dev:nullb1| & 通过 \\
-    分区 RAID A & 2 & \verb|--fs_uri=aquafs://raida:dev:nullb0,dev:nullb1| & 通过 \\
-    \multirow{2}{*}{分区 RAID A} & \multirow{2}{*}{4} & \verb|--fs_uri=aquafs://raida:dev:nullb0,dev:nullb1,| & \multirow{2}{*}{通过} \\
+    全盘 RAID C & 2 & \verb|aquafs://raidc:dev:nullb0,dev:nullb1| & 通过 \\
+    全盘 RAID 0 & 2 & \verb|aquafs://raid0:dev:nullb0,dev:nullb1| & 通过 \\
+    全盘 RAID 1 & 2 & \verb|aquafs://raid1:dev:nullb0,dev:nullb1| & 通过 \\
+    分区 RAID A & 2 & \verb|aquafs://raida:dev:nullb0,dev:nullb1| & 通过 \\
+    \multirow{2}{*}{分区 RAID A} & \multirow{2}{*}{4} & \verb|aquafs://raida:dev:nullb0,dev:nullb1,| & \multirow{2}{*}{通过} \\
     & & \verb|dev:nullb2,dev:nullb3| & \\
     \hline
   \end{tabular}
@@ -103,16 +103,16 @@ db\_bench 除了表 \ref{test-data} 中的，还需要添加如下参数：
 
 \begin{table}[htbp]
   \centering
-  \caption{RAID 0 加速测试}
+  \caption{RAID 0 加速测试，5 次运行取平均}
   \label{raid0-speedup-table}
   \begin{tabular}{cccccc}
     \hline
-    \textbf{设备数量} & \textbf{文件大小(MiB)} & \textbf{平均读时间(ms)} & \textbf{平均写时间(ms)} & \textbf{次数} & \textbf{说明} \\
+    \textbf{设备数量} & \textbf{文件大小(MiB)} & \textbf{平均读时间(ms)} & \textbf{平均写时间(ms)} & \textbf{说明} \\
     \hline
-    1 & 128 & 209 & 114 & 5 & 单盘分区 RAID \\
-    4 & 128 & 51 & 31 & 5 &  多盘全盘 RAID 0 \\
-    4 & 128 & 198 & 106 & 5 &  多盘分区 RAID \\
-    1 & 128 & 1467 & 1431 & 5 &  ZenFS 默认 \\
+    1 & 128 & 209 & 114 & 单盘分区 RAID \\
+    4 & 128 & 51 & 31 & 多盘全盘 RAID 0 \\
+    4 & 128 & 198 & 106 &  多盘分区 RAID \\
+    1 & 128 & 1467 & 1431 &  ZenFS 默认 \\
     \hline
   \end{tabular}
 \end{table}
@@ -173,7 +173,8 @@ db\_bench 除了表 \ref{test-data} 中的，还需要添加如下参数：
 
 \begin{lstlisting}[language=bash]
   $ ./test.sh
-  开始mount, mkdir, touch, ls, read&write, cp, umount测试测试脚本工程根目录: /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests
+  开始mount, mkdir, touch, ls, read&write, cp, umount测试测试脚本工程根目录: 
+    /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests
   测试用例: /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/stages/mount.sh
   测试用例: /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/stages/mkdir.sh
   测试用例: /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/stages/touch.sh
@@ -181,33 +182,37 @@ db\_bench 除了表 \ref{test-data} 中的，还需要添加如下参数：
   测试用例: /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/stages/remount.sh
   测试用例: /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/stages/rw.sh
   测试用例: /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/stages/cp.sh
-  ============================================================================================================================    Finished dev [unoptimized + debuginfo] target(s) in 0.05s
-       Running `/home/chiro/os/fuse-ext2/fs/rfs/rfs/target/debug/rfs --device=/home/chiro/ddriver -q /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt`
+  =================================    Finished dev [unoptimized + debuginfo] target(s) in 0.05s
+       Running `/home/chiro/os/fuse-ext2/fs/rfs/rfs/target/debug/rfs --device=/home/chiro/ddriver 
+          -q /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt`
   pass: case 1 - mount
-  ============================================================================================================================pass: case 2.1 - mkdir /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir0
+  ======================pass: case 2.1 - mkdir /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir0
   pass: case 2.2 - mkdir /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir0/dir0
   pass: case 2.3 - mkdir /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir0/dir0/dir0
   pass: case 2.4 - mkdir /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir1
-  ============================================================================================================================pass: case 3.1 - touch /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file0
+  =======================pass: case 3.1 - touch /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file0
   pass: case 3.2 - touch /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file1
   pass: case 3.3 - touch /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir0/file1
   pass: case 3.4 - touch /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir0/file2
   pass: case 3.5 - touch /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir1/file3
-  ============================================================================================================================pass: case 4.1 - ls /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/
+  ======================pass: case 4.1 - ls /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/
   pass: case 4.2 - ls /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir0
   pass: case 4.3 - ls /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir0/dir1
   pass: case 4.4 - ls /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/dir0/dir1/dir2
-  ============================================================================================================================    Finished dev [unoptimized + debuginfo] target(s) in 0.05s
-       Running `/home/chiro/os/fuse-ext2/fs/rfs/rfs/target/debug/rfs --device=/home/chiro/ddriver -q /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt`
+  ==============================    Finished dev [unoptimized + debuginfo] target(s) in 0.05s
+       Running `/home/chiro/os/fuse-ext2/fs/rfs/rfs/target/debug/rfs --device=/home/chiro/ddriver 
+        -q /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt`
   pass: case 5.1 - umount /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt
   pass: case 5.2 - check bitmap
-  ============================================================================================================================    Finished dev [unoptimized + debuginfo] target(s) in 0.06s
-       Running `/home/chiro/os/fuse-ext2/fs/rfs/rfs/target/debug/rfs --device=/home/chiro/ddriver -q /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt`
+  ================================    Finished dev [unoptimized + debuginfo] target(s) in 0.06s
+       Running `/home/chiro/os/fuse-ext2/fs/rfs/rfs/target/debug/rfs --device=/home/chiro/ddriver 
+        -q /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt`
   pass: case 6.1 - write /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file0
   pass: case 6.2 - read /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file0
-  ============================================================================================================================pass: case 7.1 - prepare content of /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file9
-  pass: case 7.2 - copy /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file9 to /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file10
-  ============================================================================================================================ 
+  =======pass: case 7.1 - prepare content of /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file9
+  pass: case 7.2 - copy /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file9 to 
+      /home/chiro/os/fuse-ext2/fs/rfs/rfs/tests/mnt/file10
+  =============================================== 
   Score: 34/34
   pass: 通过所有测试 (34/34)
 \end{lstlisting}
