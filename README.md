@@ -11,10 +11,11 @@
 
 ## 文档信息
 
-- 主要文档位置：[在线浏览](https://rethinkfs.github.io/docs/)
-- 进度相关信息：[进度报告](https://rethinkfs.github.io/docs/%E8%BF%9B%E5%BA%A6%E6%8A%A5%E5%91%8A/index.html)
-- 初赛说明文档：[TeX 项目](https://github.com/RethinkFS/paper)
-- 使用文档：[Get Started](https://rethinkfs.github.io/docs/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/GetStarted.html)
+- 主要技术报告 PDF：[RethinkFS-初赛报告.pdf](RethinkFS-初赛报告.pdf)
+- 过程文档位置：[在线浏览](https://rethinkfs.github.io/docs/) / [文档源码](docs/SUMMARY.md)
+- 进度相关信息：[在线浏览：进度报告](https://rethinkfs.github.io/docs/%E8%BF%9B%E5%BA%A6%E6%8A%A5%E5%91%8A/index.html)
+- 初赛技术报告源码：[TeX 项目](paper/README.md)
+- 使用文档：[在线浏览：Get Started](https://rethinkfs.github.io/docs/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/GetStarted.html)
 
 ## 赛题完成情况
 
